@@ -21,18 +21,24 @@ function handleChange(event) {
   createUI();
 }
 
+function elm(type, attr = {}) {
+  let element = document.createElement(type);
+  for (let key in attr) {
+  }
+  return element;
+}
+
 function createUI(dataList = allMovies) {
   root.innerHTML = "";
   dataList.forEach((data, i) => {
-    let li = document.createElement("li");
-    let hr = document.createElement("hr");
-    let button = document.createElement("button");
+    let li = elm("li");
+    let hr = elm("hr");
+    let button = elm("button", { id: i });
     button.innerText = data.watched ? "Watched" : "To Watched";
     if (data.watched) button.classList.add("active");
-    button.id = i;
     button.addEventListener("click", handleChange);
 
-    let p = document.createElement("p");
+    let p = elm("p");
     p.innerHTML = data.name;
 
     li.append(button, p);
