@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="main container flex f-col f-center">
+      <h1>My Movies Watchlist</h1>
+      <section class="form">
+        <input class="form-box" type="text" />
+        <ul class="root"></ul>
+      </section>
+    </main>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      let root = document.querySelector(".root");
+      let input = document.querySelector(".form-box");
+
+      let allMovies = [
+        {
+          name: "Hulk",
+          watched: false,
+        },
+        {
+          name: "Thor",
+          watched: true,
+        },
+      ];
+
+      input.addEventListener("keyup", (event) => {
+        if (event.keyCode === 13) {
+          let movie = {
+            name: event.target.value,
+            watched: false,
+          };
+          event.target.value = "";
+          allMovies.push(movie);
+          createUI(allMovies, root);
+        }
+      });
+
+      function handleChange(event) {
+        let id = event.target.id;
+        allMovies[id].watched = !allMovies[id].watched;
+        createUI(allMovies, root);
+      }
+
+      let createElement = React.createElement;
+
+      function createUI(dataList = allMovies, root = root) {
+        let UI = dataList.map((data, i) => {
+          return (
+            <li>
+              <button
+                id={i}
+                className={data.watched ? "active" : ""}
+                onClick={handleChange}
+              >
+                {data.watched ? "Watched" : "To Watch"}
+              </button>
+              <p>{data.name}</p>
+            </li>
+          );
+        });
+        ReactDOM.render(UI, root);
+      }
+
+      createUI(allMovies, root);
+    </script>
+  </body>
+</html>
