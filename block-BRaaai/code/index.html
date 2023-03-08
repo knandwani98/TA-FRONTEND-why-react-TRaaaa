@@ -20,6 +20,21 @@
     <main id="root"></main>
   </body>
   <script type="text/babel">
+    let months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
     let cardInfo = {
       title: "City Lights in New York",
       date: new Date("2017-01-26"),
@@ -33,17 +48,25 @@
     };
 
     let article = (
-      <>
-        <div>{cardInfo.category}</div>
-        <img src={cardInfo.imageURL} alt={cardInfo.title} />
-        <h2>{cardInfo.title}</h2>
-        <label for="">{cardInfo.subTitle}</label>
-        <p>{cardInfo.description}</p>
-        <div>
-          <span>⏲{"mins ago"}</span>
-          <span>💬{cardInfo.comments + "comments"}</span>
+      <article>
+        <div className="card-img">
+          <img src={cardInfo.imageURL} alt={cardInfo.title} />
+          <div className="date">
+            <div>{cardInfo.date.getDate()}</div>
+            <div>{months[cardInfo.date.getMonth()].slice(0, 3)}</div>
+          </div>
+          <div className="category">{cardInfo.category}</div>
         </div>
-      </>
+
+        <div className="card-details">
+          <h2>{cardInfo.title}</h2>
+          <label for="">{cardInfo.subTitle}</label>
+          <p>{cardInfo.description}</p>
+          <div className="footer">
+            <span>💬{cardInfo.comments + "comments"}</span>
+          </div>
+        </div>
+      </article>
     );
 
     ReactDOM.render(article, document.getElementById("root"));
