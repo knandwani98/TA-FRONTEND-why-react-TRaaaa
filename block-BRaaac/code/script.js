@@ -1,7 +1,16 @@
 let root = document.querySelector(".root");
 let input = document.querySelector(".form-box");
 
-let allMovies = [];
+let allMovies = [
+  {
+    name: "Hulk",
+    watched: false,
+  },
+  {
+    name: "Thor",
+    watched: true,
+  },
+];
 
 input.addEventListener("keyup", (event) => {
   if (event.keyCode === 13) {
@@ -11,39 +20,62 @@ input.addEventListener("keyup", (event) => {
     };
     event.target.value = "";
     allMovies.push(movie);
-    createUI();
+    createUI(allMovies, root);
   }
 });
 
 function handleChange(event) {
   let id = event.target.id;
   allMovies[id].watched = !allMovies[id].watched;
-  createUI();
+  createUI(allMovies, root);
 }
 
-function elm(type, attr = {}) {
+function createElement(type, attr = {}, ...children) {
   let element = document.createElement(type);
+
   for (let key in attr) {
+    if (key.startsWith("data-")) {
+      element.setAttribute(key, attr[key]);
+    } else if (key.startsWith("on")) {
+      let eventType = key.replace("on", "");
+      element.addEventListener(eventType, attr[key]);
+    } else {
+      element[key] = attr[key];
+    }
   }
+
+  children.forEach((child) => {
+    if (typeof child === "object") {
+      element.append(child);
+    }
+    if (typeof child === "string") {
+      let node = document.createTextNode(child);
+      element.append(node);
+    }
+  });
   return element;
 }
 
-function createUI(dataList = allMovies) {
+function createUI(dataList = allMovies, root = root) {
   root.innerHTML = "";
   dataList.forEach((data, i) => {
-    let li = elm("li");
-    let hr = elm("hr");
-    let button = elm("button", { id: i });
-    button.innerText = data.watched ? "Watched" : "To Watched";
-    if (data.watched) button.classList.add("active");
-    button.addEventListener("click", handleChange);
+    let li = createElement(
+      "li",
+      {},
+      createElement(
+        "button",
+        {
+          id: i,
+          className: data.watched ? "active" : "",
+          onclick: handleChange,
+        },
+        data.watched ? "Watched" : "To Watch"
+      ),
+      createElement("p", null, data.name)
+    );
 
-    let p = elm("p");
-    p.innerHTML = data.name;
-
-    li.append(button, p);
-    root.append(hr, li);
+    root.append(li);
   });
 }
 
-createUI();
+createUI(allMovies, root);

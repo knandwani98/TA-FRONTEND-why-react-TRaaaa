@@ -228,6 +228,7 @@ h1 {
   font-weight: 500;
   padding: 0.8rem 0;
   margin: 0.1rem 0;
+  border-top: 1px dashed white;
 }
 
 .form ul li button {
@@ -249,10 +250,6 @@ h1 {
   background-color: var(--four);
 }
 
-.form ul hr:first-child {
+.form ul li:first-child {
   border: none;
-}
-
-hr {
-  border-bottom: 1px dashed white;
 }
