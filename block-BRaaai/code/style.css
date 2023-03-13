@@ -1,0 +1,269 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+v2.0 | 20110126
+License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+:root {
+  --one: #dd8766;
+  --two: #128084;
+  --three: #544766;
+  --four: #cf7672;
+  --five: #efb462;
+}
+
+/* ------- Generals ---------*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+/* Container */
+.container {
+  padding-inline: 4rem;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+/* flex */
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.f-center {
+  justify-content: center;
+}
+
+/* center */
+.center {
+  text-align: center;
+}
+
+/* gaps */
+.gap4 {
+  padding: 4rem 0;
+}
+
+main {
+  min-height: 100vh;
+  min-width: 1200px;
+  width: 100%;
+  display: grid;
+  place-content: center;
+}
+
+article {
+  width: 50%;
+  padding: 2rem;
+  background-color: whitesmoke;
+  border-radius: 8px;
+}
+
+article .card-img {
+  position: relative;
+}
+
+.card-img img {
+  width: 100%;
+  vertical-align: bottom;
+}
+
+article .date {
+  text-transform: uppercase;
+  background-color: #cf7672;
+  padding: 1rem;
+  height: 5rem;
+  width: 5rem;
+  display: inline-block;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  font-size: 1.2rem;
+  gap: 0.2rem;
+  color: white;
+  font-weight: 700;
+  position: absolute;
+  right: 4%;
+  top: 4%;
+  z-index: 999;
+}
+
+article .category {
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  font-size: 1rem;
+  color: white;
+  font-weight: 700;
+  background-color: #cf7672;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+}
+
+article .card-details {
+  margin-top: 2rem;
+}
+
+h2 {
+  font-size: 2rem;
+  color: black;
+  font-weight: 600;
+}
+
+label {
+  display: inline-block;
+  font-size: 1.5rem;
+  color: var(--four);
+  margin-block: 1rem;
+}
+p {
+  font-size: 1rem;
+  color: #544766;
+  line-height: 2;
+}
+
+.card-details .footer {
+  color: var(--three);
+  margin-top: 3rem;
+}
