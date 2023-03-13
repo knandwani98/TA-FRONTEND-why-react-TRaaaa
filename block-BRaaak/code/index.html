@@ -23,6 +23,20 @@
       <div id="root"></div>
     </div>
     <script type="text/babel">
+      let months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
       let articles = [
         {
           title: "City Lights in New York",
@@ -60,10 +74,26 @@
         },
       ];
 
-      let Card = (props) => {
+      let Card = (cardInfo) => {
         return (
           <article>
-            <h2>{props.title}</h2>
+            <div className="card-img">
+              <img src={cardInfo.imageURL} alt={cardInfo.title} />
+              <div className="date">
+                <div>{cardInfo.date.getDate()}</div>
+                <div>{months[cardInfo.date.getMonth()].slice(0, 3)}</div>
+              </div>
+              <div className="category">{cardInfo.category}</div>
+            </div>
+
+            <div className="card-details">
+              <h2>{cardInfo.title}</h2>
+              <label htmlFor="">{cardInfo.subTitle}</label>
+              <p>{cardInfo.description}</p>
+              <div className="footer">
+                <span>💬{cardInfo.comments + "comments"}</span>
+              </div>
+            </div>
           </article>
         );
       };
@@ -71,7 +101,17 @@
       function cardsUI(dataList) {
         let array = [];
         dataList.map((data) => {
-          array.push(<Card title={data.title} />);
+          array.push(
+            <Card
+              title={data.title}
+              date={data.date}
+              comments={data.comments}
+              subTitle={data.ubTitle}
+              description={data.description}
+              category={data.category}
+              imageURL={data.imageURL}
+            />
+          );
         });
         return array;
       }
