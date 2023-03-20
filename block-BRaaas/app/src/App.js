@@ -5,12 +5,18 @@ let fruits = [
   { id: "pear", value: "🍐 pear" },
 ];
 
-function handleClick(event) {
-  alert(`Hello ${event.target.innerText}`);
+function handleClick(fruit) {
+  alert(fruit);
 }
 
 function App() {
-  return;
+  return fruits.map((fruit) => {
+    return (
+      <button key={fruit.id} onClick={() => handleClick(fruit.value)}>
+        {fruit.value}
+      </button>
+    );
+  });
 }
 
 export default App;
