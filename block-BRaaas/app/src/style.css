@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  padding: 4rem;
+}
+
+button {
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+}
