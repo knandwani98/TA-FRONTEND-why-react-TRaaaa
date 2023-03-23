@@ -1,14 +1,7 @@
 import React from "react";
 
-const Sidebar = () => {
-  return (
-    <aside className="container">
-      <h2>Colors</h2>
-      <ul>
-        <li>{}</li>
-      </ul>
-    </aside>
-  );
+const Sidebar = (props) => {
+  return <aside>{props.name}</aside>;
 };
 
 export default Sidebar;
