@@ -136,25 +136,35 @@ body {
 
 .grid {
   display: grid;
+}
+
+.g-1-4 {
   grid-template-columns: 1fr 4fr;
-  min-height: 100vh;
+  margin: 3rem;
 }
 
-aside {
-  background-color: coral;
-  height: 100%;
+.g-5 {
+  grid-template-columns: repeat(5, 1fr);
+  /* margin: 3rem; */
 }
 
-section {
-  background-color: beige;
-  height: 100%;
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrap {
+  flex-wrap: wrap;
 }
 
-.container {
-  padding-top: 2rem;
-  padding-inline: 2rem;
+.card {
+  width: 100px;
+  margin-bottom: 1rem;
 }
 
-.container h2 {
-  font-size: 2rem;
+.shade {
+  height: 50px;
+  background-color: black;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
 }
